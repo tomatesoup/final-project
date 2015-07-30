@@ -1,0 +1,16 @@
+<div class="col-md-5">
+	<% if @subtitles.any? %>
+		<% @subtitles.each do |subtitle| %>
+		<div>
+			<ul>
+				<li><%= subtitle %></li>
+			</ul>
+		</div>
+		<% end %>
+	<% else %>
+		<p class="lead text-center">
+			No subtitles found.
+		</p>
+	<% end %>
+</div>
+

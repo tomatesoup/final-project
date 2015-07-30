@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FinalProject</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li><%= link_to 'Home', root_path %></li>
+			</ul>
+			<form class="navbar-form navbar-left" role="search">
+				<%= form_tag(root_path, :method => "get", id: "search-form", role: "search") do %>
+				<%= text_field_tag :search, params[:search], class:"form-control col-sm-12", placeholder:"Search" %>
+				<% end %>
+			</form>
+			<ul class="nav navbar-nav">
+				<li><%= link_to 'Submit', new_subtitle_path %></li>
+				<li><%= link_to 'Login', new_user_session_path %></li>
+				<li><%= link_to 'Signup', new_user_registration_path %></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
+</body>
+</html>

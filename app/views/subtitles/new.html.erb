@@ -1,0 +1,13 @@
+<div class="col-md-6 col-md-offset-1">
+	<%= form_for @subtitle, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+		<div class="form-group">
+			<%= f.label "Upload Your File"%>
+
+			<%= f.text_area :title%>
+
+			<%= f.text_area :description%>
+			
+			<%= f.file_field :file %>
+		</div>
+	<% end %>
+</div>
