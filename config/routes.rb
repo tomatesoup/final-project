@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   #   resources :subtitles, only: [:index, :create]
   # end
 
-  resources :subtitles, only: [:index, :create, :new]
+  resources :subtitles, only: [:index, :create, :new, :search]
 
   root 'subtitles#all'
 
-  get '/search', to: 'subtitles#search'
+  # get '/search', to: 'subtitles#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

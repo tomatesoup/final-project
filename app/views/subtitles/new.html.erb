@@ -1,13 +1,27 @@
-<div class="col-md-6 col-md-offset-1">
+<div class="jumbotron upload-page">
+	<div class="container">
 	<%= form_for @subtitle, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-		<div class="form-group">
-			<%= f.label "Upload Your File"%>
+	<div class="form-group">
 
-			<%= f.text_area :title%>
+		<h1><%= f.label "Upload Your File"%></h1>
+		<p class="forms">
+			<%= f.label :title%>
+			<br>
+			<%= f.text_field :title%>	
+		</p>
 
-			<%= f.text_area :description%>
-			
+		<p>
+			<%= f.label :description%>
+			<br>
+			<%= f.text_field :description%>
+		</p>
+		<p>
 			<%= f.file_field :file %>
-		</div>
+		</p>
+	</div>
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
 	<% end %>
+	</div>
 </div>

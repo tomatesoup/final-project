@@ -7,14 +7,15 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<ul class="nav navbar-nav">
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav" id="li">
 				<li><%= link_to 'Home', root_path %></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<%= form_tag(root_path, :method => "get", id: "search-form", role: "search") do %>
-				<%= text_field_tag :search, params[:search], class:"form-control col-sm-12", placeholder:"Search" %>
+				<%= text_field_tag :search, params[:search], class:"form-control col-sm-12"%>
+				<%= submit_tag "Search", :name => nil %>
 				<% end %>
 			</form>
 			<ul class="nav navbar-nav">
@@ -28,6 +29,6 @@
 	<div class="container">
 		<%= yield %>
 	</div>
-
+<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </body>
 </html>

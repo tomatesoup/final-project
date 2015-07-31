@@ -18,6 +18,7 @@
 
 body {
 	margin-top: 60px;
+	font-family: 'Poiret One', cursive;
 }
 
 .border-form-div {
@@ -44,4 +45,52 @@ body {
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
+}
+
+.upload-page {
+	text-align: center;
+}
+
+.container {
+	text-align: center;
+	opacity: .7;
+	border-radius: 3px;
+	color: white;
+	width: 700px;
+
+}
+
+.form-group h1 {
+	text-decoration: bold;
+	font-size: 38px;
+}
+
+.form-group p {
+	text-align: center;
+	font-size: 23px;
+	width: 60px;
+	padding-left: 30%;
+}
+
+.forms {
+	text-align: center;
+}
+
+.field {
+	text-align: center;
+}
+
+#navbar {
+	background-color: #7a1200;
+	color: white;
+	font-size: 20px;
+}
+
+.navbar-nav > li > a {
+	color: white !important;
+}
+
+.container {
+	color: black;
+	text-align: center;
 }
