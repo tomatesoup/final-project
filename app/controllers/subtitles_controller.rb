@@ -1,45 +1,64 @@
 class SubtitlesController < ApplicationController
 
-	def all
-		if params[:search]
-			@subtitles = Subtitle.search(params[:search])  
-		else
-			@subtitles = Subtitle.all 
+	def index
+		@subtitles = Subtitle.all
+
+		respond_to do |format|
+			format.html { render 'index' }
+			format.json { render json: @subtitles }
 		end
 	end
 
-		def index
-			@user = User.find params[:user_id]
-			@subtitles = @user.subtitles.all
-		end
+	def show
+		@subtitle = Subtitle.find(params[:id])
 
-		def show
-			@subtitle = Subtitle.find(params[:id])
-		end
-
-		def new
-			@subtitle = Subtitle.new
-		end
-
-		def create
-			@subtitle = Subtitle.new(subtitle_params)
-			if @subtitle.valid?
-				@subtitle.save
-				redirect_to root_path
-				return
+		respond_to do |format|
+			format.json do
+				file = File.new @subtitle.file.current_path
+				subtitle_file = SRT::File.parse(file)
+				subtitle = subtitle_file.lines.map do |line|
+					{
+						start_time: line.start_time,
+						end_time: line.end_time,
+						text: line.text
+					}
+				end
+				render json: subtitle
 			end
+			format.html { render 'show' }
+		end
+	end
+
+	def new
+		@subtitle = Subtitle.new
+	end
+
+	def create
+		@subtitle = Subtitle.new(subtitle_params)
+		@subtitle.user = current_user
+		
+		if @subtitle.valid?
+			@subtitle.save
+
+			redirect_to subtitles_path
+		else
 			render :new 
 		end
-
-		def search
-			@subtitles = Subtitle.search(params[:search]) 
-			render status: 200, json: subtitles 
-		end
-
-		private
-
-		def subtitle_params
-			params.require(:subtitle).permit(:title, :submission_date, :description, :file)
-		end
-
 	end
+
+	def search
+		@subtitles = Subtitle.search(params[:search]) 
+
+		respond_to do |format|
+			format.html { render 'index'}
+			format.json { render json: @subtitles }
+		end
+	end
+
+	private
+
+	def subtitle_params
+		params.require(:subtitle).permit(:title, :submission_date, :description, :file)
+	end
+
+end

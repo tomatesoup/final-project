@@ -10,25 +10,29 @@
 	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav" id="li">
-				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Home', subtitles_path %></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
-				<%= form_tag(root_path, :method => "get", id: "search-form", role: "search") do %>
-				<%= text_field_tag :search, params[:search], class:"form-control col-sm-12"%>
-				<%= submit_tag "Search", :name => nil %>
-				<% end %>
-			</form>
+
 			<ul class="nav navbar-nav">
 				<li><%= link_to 'Submit', new_subtitle_path %></li>
 				<li><%= link_to 'Login', new_user_session_path %></li>
 				<li><%= link_to 'Signup', new_user_registration_path %></li>
+				<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 			</ul>
+
+			<div class="navbar-form navbar-right">
+			<%= form_tag(search_path, :method => "get", id: "search-form", class: "navbar-form navbar-left", role: "search") do %>
+				<%= text_field_tag :search, params[:search], class:"form-control col-sm-12"%>
+				<%= submit_tag "Search", :name => nil, :class => "search-button btn btn-default" %>
+			<% end %>
+			</div>
 		</div>
 	</nav>
 
 	<div class="container">
+		User: <%= current_user.try(:id) || 0 %>
 		<%= yield %>
 	</div>
-<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </body>
 </html>

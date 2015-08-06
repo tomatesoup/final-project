@@ -1,0 +1,22 @@
+<div>
+	<h1>Subtitles Home</h1>
+</div>
+
+<div>
+	<h3>Browse Subtitles</h3>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+	<div class="box">
+		<ul>
+			<% @subtitles.each do |subtitle| %>
+			<li>
+				<h4><%= subtitle.title %></h4>
+				<p>Posted on <%= subtitle.submission_date %></p>
+				<p><%= subtitle.description %></p>
+				<p>Subtitle File: <%= link_to 'Right click to download', subtitle.file.to_s %></p>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
