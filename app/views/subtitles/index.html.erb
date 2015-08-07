@@ -9,7 +9,7 @@
 			<% @subtitles.each do |subtitle| %>
 			<li>
 				<h4><%= subtitle.title %></h4>
-				<p>Posted on <%= subtitle.submission_date %></p>
+				<p>Posted on <%= subtitle.created_at %></p>
 				<p><%= subtitle.description %></p>
 				<p>Subtitle File: <%= link_to 'Right click to download', subtitle.file.to_s %></p>
 

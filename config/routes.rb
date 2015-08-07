@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get '/search', to: 'subtitles#search'
 
+  root to: redirect('/subtitles')
 end

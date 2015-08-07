@@ -10,15 +10,16 @@
 	<nav class="navbar navbar-default" id="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav" id="li">
-				<li><a href="/subtitles" class="page-logo">Sub.</a></li>
-				<!-- <li><%= link_to 'Home', subtitles_path %></li> -->
+				<li>
+					<%= link_to 'Sub.', subtitles_path, class: 'page-logo' %>
+				</li>
 			</ul>
 
 			<ul class="nav navbar-nav">
 				<li><%= link_to 'Submit', new_subtitle_path %></li>
+				<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 				<li><%= link_to 'Login', new_user_session_path %></li>
 				<li><%= link_to 'Signup', new_user_registration_path %></li>
-				<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 			</ul>
 
 			<div class="navbar-form navbar-right">

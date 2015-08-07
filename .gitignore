@@ -21,3 +21,4 @@ build/
 .rvmrc
 public/uploads/
 log/
+db/*.sqlite3
